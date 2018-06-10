@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <title>HTML5 Game Development - 實踐大學資設系</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+        <script src="js/jquery-1.5.2.min.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <body>
+        <header>
+				<h2>實踐大學資設系-打磚塊遊戲</h2>
+        </header>
+
+
+		<center>
+		<form class="diff">
+				<input type="radio" name="level" id="low" value="" checked="true" class="low">
+				<label for="low" class="low">LOW</label>
+				<input type="radio" name="level" id="high" value="" class="high">
+				<label for="high" class="high">HIGH</label>
+				<input type="button" id="start" value="開始遊戲">
+		</form>
+		</center>
+
+		 <div class="container">
+            <canvas id="scene" width="800" height="600"></canvas>
+        </div>
+
+    </body>
+</html>
