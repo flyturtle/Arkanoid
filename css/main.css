@@ -50,3 +50,13 @@ header h2{
 .high {
 	background-color: rgba(255, 0,0,0.5);
 }
+.center {
+  text-align: center;
+  margin: auto;
+}
+#BGM {
+  width: 90px ;
+}
+#BGMslider {
+  cursor: pointer;
+}
