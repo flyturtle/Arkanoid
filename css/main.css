@@ -33,20 +33,40 @@ header h2{
     width: 800px;
 	outline: 1px solid black;
 }
-.diff > input:nth-child(n<3) {
-	width: 30px;
-	height: 30px;
+.diff > * {
+	width: 80px;
+	height: 35px;
 	text-align: center;
+	cursor: pointer;
 }
 .diff{
 	font-size: 2em;
 	height: 70px;
 	line-height: 70px;
 	text-align: center;
+	padding: 0 auto;
 }
+
 .low {
 	background-color: rgba(0, 255,0,0.5);
 }
 .high {
 	background-color: rgba(255, 0,0,0.5);
+}
+.center {
+  text-align: center;
+  margin: auto;
+}
+#BGM {
+	height: 35px;
+	width: 90px ;
+	cursor: pointer;
+
+}
+#BGMslider {
+  cursor: pointer;
+}
+#low ,#high {
+	width: 15px;
+	height: 15px;
 }
