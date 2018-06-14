@@ -12,7 +12,35 @@ var iElapsed = iMin = iSec = 0;
 var sLastTime, sLastPoints;
 var BrickEmpty = false;
 
+$(function(){
+  var bgmplay = false;
+  var bgmvol = 0.5;
+  bgm = new Audio('media/howworld.mp3');
 
+  function sliderchange(bgmvol){
+    var bgmvol = $("#BGMslider").val();
+    if (bgmvol >=0) {
+      bgm.volume = ($("#BGMslider").val()*0.1);
+    } else if (bgmvol=0) {
+      bgm.pause();
+    }
+    return bgmvol;
+  }
+  $("#BGMslider").change(sliderchange);
+  $("#BGM").click(function(){
+      if (bgmplay){
+        bgm.pause();
+        console.log("Paused");
+        bgmplay =false;
+        $(this).text("active");
+      }  else {
+          bgm.play();
+          console.log("Playing");
+          bgmplay =true;
+          $(this).text("inactive");
+        }
+      });
+})
 
 
 // objects :
@@ -91,18 +119,16 @@ function drawScene() { // main drawScene function
         oBricks.objs[iRow][iCol] = 0;
         oBall.dy = -oBall.dy;
         iPoints++;
-   		console.log(iPoints);
-
-
         aSounds[0].play(); // play sound
 		//brock all bricks and level up
-		if ( iRow ==0&& iCol == 0){
+		if ( iRow * iCol == 0){
 		    console.log("Empty");
         BrickEmpty= true;
         console.log("Level up");
         drawScene();
 
           }
+
     }
 
     // reverse X position of ball
@@ -192,18 +218,22 @@ function game(){
 
     //function Bricks(w, h, r, c, p)
     var widthBrick = [(width / 2) - 1,(width / 5) - 1,(width / 8) - 1,(width / 11) - 1];
-    var heightBrick = [20];
+    var heightBrick = 20;
     var rowsBrick =[2,4,6,8,10];
     var colsBrick=[8,10,12,14];
     console.log(widthBrick[0]);
 
 	   if(r1.checked==true)
-	    {
-		oBricks = new Bricks(widthBrick[0], heightBrick[0], rowsBrick[0], colsBrick[0], 2); // new bricks object
-	}else if(r2.checked==true)
-	{
-		oBricks = new Bricks(widthBrick[2], heightBrick[0], rowsBrick[2], colsBrick[2], 2); // new bricks object
-	}
+     {
+       oBricks = new Bricks(widthBrick[0], heightBrick, rowsBrick[0], colsBrick[0], 2); // new bricks object
+     }else if (r1.checked && BrickEmpty) {
+       oBricks = new Bricks(widthBrick[1], heightBrick, rowsBrick[1], colsBrick[1], 2);
+     }
+     if(r2.checked==true)
+     {
+       oBricks = new Bricks(widthBrick[2], heightBrick, rowsBrick[2], colsBrick[2], 2); // new bricks object
+     }
+
     oBricks.objs = new Array(oBricks.r); // fill-in bricks
 	for (i=0; i < oBricks.r; i++) {
 		oBricks.objs[i] = new Array(oBricks.c);
